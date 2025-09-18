@@ -1,0 +1,39 @@
+Backup e Restauração de Dados no Termux
+
+1️⃣ Preparação
+
+Certifique-se de conceder permissão de armazenamento ao Termux:
+
+termux-setup-storage
+
+2️⃣ Backup
+
+1. Vá para o diretório base do Termux:
+
+cd /data/data/com.termux/files
+ls
+
+2. Crie o backup compactado:
+
+tar -zcf /sdcard/termux-backup.tar.gz home usr
+
+> Isso cria um arquivo chamado termux-backup.tar.gz no armazenamento interno, contendo:
+
+home → seus scripts e arquivos pessoais
+
+usr → pacotes e bibliotecas do Termux
+
+3️⃣ Restauração
+
+1. Vá para o diretório base do Termux:
+
+cd /data/data/com.termux/files
+ls
+
+2. Restaure o backup:
+
+tar -zxf /sdcard/termux-backup.tar.gz --recursive-unlink --preserve-permissions
+
+> Isso restaura todos os arquivos do backup, mantendo permissões e sobrescrevendo arquivos existentes.
+
+3. Feche o Termux e abra novamente para que tudo seja carregado corretamente.
